@@ -18,11 +18,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav moreitem">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">About</a>
-        <a class="nav-link" href="#">Contact</a>
-        <a class="nav-link" href="#">Registration</a>
-        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link active" aria-current="page" href="{% url "home" %}">Home</a>
+        <a class="nav-link" href="{% url "about" %}">About</a>
+        <a class="nav-link" href="{% url "contact" %}">Contact</a>
+        <a class="nav-link" href="{% url "register" %}">Registration</a>
+        <a class="nav-link" href="{% url "login" %}">Login</a>
         
       </div>
     </div>
