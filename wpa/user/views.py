@@ -11,6 +11,22 @@ def about(request):
     return render(request , "about.html")
 
 def contact(request):
+    if request.method == "POST":
+        name =  request.POST.get("name")
+        emercont =  request.POST.get("emercont")
+        phone = request.POST.get("phone")
+        location = request.POST.get("location")
+        msg = request.POST.get("msg")
+        currlocation = request.POST.get("currlocation")
+        coords = request.POST.get("coords")
+        media = request.POST.get("media")
+        urgent = EmergencyUser(
+            name = name , emercont = emercont ,
+            phone = phone , location = location , msg = msg,
+            currlocation = currlocation , coords = coords ,
+            media = media
+        )
+        urgent.save()
     return render(request , "contact.html")
 
 def login(request):

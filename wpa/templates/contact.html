@@ -14,41 +14,41 @@
     <div class="card">
         <h2> Emergency Help</h2>
 
-        <form class="grid-form" enctype="multipart/form-data">
-
+        <form class="grid-form" method ="post">
+                {% csrf_token %}
             <!-- Row 1 -->
             <div class="input-box">
-                <input type="text" required placeholder="">
+                <input type="text" id="name"  name="name" placeholder="">
                 <label>Your Name</label>
             </div>
 
             <div class="input-box">
-                <input type="tel" required placeholder="">
+                <input type="tel" name="phone" required placeholder="">
                 <label>Phone Number</label>
             </div>
 
             <div class="input-box">
-                <input type="tel" required placeholder="">
+                <input type="tel" name="emercont" required placeholder="">
                 <label>Emergency Contact</label>
             </div>
 
             <div class="input-box">
-                <input type="text" required placeholder="">
+                <input type="text" name ="location" required placeholder="">
                 <label>City / Area</label>
             </div>
 
             <div class="input-box full">
-                <input type="text" required placeholder="">
+                <input type="text" name="msg" required placeholder="">
                 <label>What happened?</label>
             </div>
 
             <div class="input-box">
-                <input type="text" id="location" readonly placeholder="">
+                <input type="text" id="currlocation" name="currlocation" readonly placeholder="">
                 <label>Your Location</label>
             </div>
 
             <div class="input-box">
-                <input type="text" id="coords" readonly placeholder="">
+                <input type="text" id="coords" name="coords" readonly placeholder="">
                 <label>Coordinates</label>
             </div>
 
@@ -61,7 +61,7 @@
                     Choose File
                 </button>
 
-                <p id="fileName">No file selected</p>
+                <p id="fileName" name ="file">No file selected</p>
             </div>
 
             <!-- Buttons -->
@@ -94,10 +94,10 @@ function showPosition(position) {
     fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
     .then(res => res.json())
     .then(data => {
-        document.getElementById("location").value = data.display_name;
+        document.getElementById("currlocation").value = data.display_name;
     })
     .catch(() => {
-        document.getElementById("location").value = "Unable to fetch location";
+        document.getElementById("currlocation").value = "Unable to fetch location";
     });
 }
 
